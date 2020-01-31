@@ -1,0 +1,309 @@
+﻿<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">evenodd</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="WGKdO}`72WyEy09v8C_l">
+        <field name="VAR">analisis</field>
+        <value name="VALUE">
+          <block type="lists_create_with" id="@d8$Vn{_Q-w}[W72](dj">
+            <mutation items="0"></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="iVwwiKGbH*RJ..!,il1*">
+            <field name="VAR">signal</field>
+            <value name="VALUE">
+              <block type="math_number" id="Xv;[sI{F-q)i#IE*3w,E">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="x=V33~4Lb|(sLv`J[:Eb">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="O*@58sDc=!cOO}*b2vf9">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="ml)25~7^q}3I9}vjf:%K">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="tick_analysis" id="K5sw2T/0L`?Xt5+!yOx2" x="567" y="-3">
+    <statement name="TICKANALYSIS_STACK">
+      <block type="variables_set" id="z^EpT_HJ7d%YU~1XkEa!">
+        <field name="VAR">OP</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="EAr/#0k;H}}}pJaAB1T4">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="math_change" id=",g*c-;UOy35Pj#za0-0[">
+            <field name="VAR">counter</field>
+            <value name="DELTA">
+              <shadow type="math_number" id="R5C7KXnv{1asyp?2=[nb">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="lists_setIndex" id=",9vu9^,)7:4]H%l`FD)_">
+                <mutation at="false"></mutation>
+                <field name="MODE">INSERT</field>
+                <field name="WHERE">LAST</field>
+                <value name="LIST">
+                  <block type="variables_get" id="2?;.eh;i.~Y%zZCG)OG[">
+                    <field name="VAR">analisis</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="last_digit" id="F|a-wV[MRB,*(})*AJ,)"></block>
+                </value>
+                <next>
+                  <block type="controls_if" id="?kW!jw~m$]JXX@zR]]h@">
+                    <value name="IF0">
+                      <block type="logic_operation" id="{HS~V8SU)G%UO(9SD%Xv">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="wt}hQ%,`aEk`_-GZu_BN">
+                            <field name="OP">GTE</field>
+                            <value name="A">
+                              <block type="variables_get" id="PRf=8?_LFEtnEKDi]_D7">
+                                <field name="VAR">counter</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="[Zhk;`+7TxY*tE^PhPc,">
+                                <field name="NUM">5</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number_property" id="J-3+52~:fGp+b|G@|~yA">
+                            <mutation divisor_input="true"></mutation>
+                            <field name="PROPERTY">DIVISIBLE_BY</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <shadow type="math_number" id="R{FO97n/KV?]yAk;n_^|">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="variables_get" id="y2DyzrW)_08zr`:reg%X">
+                                <field name="VAR">counter</field>
+                              </block>
+                            </value>
+                            <value name="DIVISOR">
+                              <block type="math_number" id="!SD3BtvyTy-GypK1Zk%i">
+                                <field name="NUM">5</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="5$Jov6N^OQ+D{wonN,KC">
+                        <value name="IF0">
+                          <block type="math_number_property" id="$Ah(=WI?|-)dHVjiT8~C">
+                            <mutation divisor_input="false"></mutation>
+                            <field name="PROPERTY">ODD</field>
+                            <value name="NUMBER_TO_CHECK">
+                              <shadow type="math_number" id="R{FO97n/KV?]yAk;n_^|">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="last_digit" id="3NCtM8#q5qSRVq8qca,p"></block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="math_change" id="CEgfIg3c%FJ#L1WeY^sf">
+                            <field name="VAR">signal</field>
+                            <value name="DELTA">
+                              <shadow type="math_number" id="[K(5x5ldB/!~,tv|q)7c">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="variables_set" id="IwFzm_GGUq_RXlMz}(4(" collapsed="true">
+                        <field name="VAR">analisis-string</field>
+                        <value name="VALUE">
+                          <block type="lists_split" id="a!pN0l5$Z8a4Pq@ZHhPR">
+                            <mutation mode="JOIN"></mutation>
+                            <field name="MODE">JOIN</field>
+                            <value name="INPUT">
+                              <block type="variables_get" id="/f`dsL$l^{TRz/h/6jjO">
+                                <field name="VAR">analisis</field>
+                              </block>
+                            </value>
+                            <value name="DELIM">
+                              <shadow type="text" id="Q$FL[$mj_jb^_3VPojX:">
+                                <field name="TEXT">-</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="notify" id=".x:)LMyeB{y1O[n;`A/s" collapsed="true">
+                            <field name="NOTIFICATION_TYPE">info</field>
+                            <field name="NOTIFICATION_SOUND">silent</field>
+                            <value name="MESSAGE">
+                              <shadow type="text" id=".A$3?Seepo?j8O;f1qxt">
+                                <field name="TEXT">abc</field>
+                              </shadow>
+                              <block type="text_join" id="-iv$Hz5tlDN$4$bfU;`b">
+                                <mutation items="4"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="rU=rst.(Q55CbiJ{,b}S">
+                                    <field name="TEXT">Signal : </field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="AJb[msp#~kWtU;v-z}U+">
+                                    <field name="VAR">signal</field>
+                                  </block>
+                                </value>
+                                <value name="ADD2">
+                                  <block type="text" id="SR3^:eS))0!,oy*PP#z3">
+                                    <field name="TEXT"> || LD : </field>
+                                  </block>
+                                </value>
+                                <value name="ADD3">
+                                  <block type="variables_get" id="89xJr]Q5.mEcrTO|GySu">
+                                    <field name="VAR">analisis-string</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_if" id="g4D(IKnURETc$zC{+I@^">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="UZDl)fW@@@OeiVf*zC$a">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="$a-85)R,ca2Y9JW{c}5i">
+                                        <field name="VAR">counter</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="]QUv]w7lC!UW@q=1S?G(">
+                                        <field name="NUM">15</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="controls_if" id="FM{D|Z;C?AA3$(B%gKPV">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id=",kYB8f9{n.MWrg@;TTKu">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="I^#I:OqWljPD=~.~L)eQ">
+                                            <field name="VAR">signal</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="nVe@Bb-~q.U5r1sA8OV4">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="variables_set" id=".Jo}l5fk^.-BW0k(ji@Y">
+                                        <field name="VAR">OP</field>
+                                        <value name="VALUE">
+                                          <block type="logic_boolean" id="0El6N9bjEi*+G{92=fdd">
+                                            <field name="BOOL">TRUE</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="variables_set" id="cuTSGhhp:rgdsrq)Re_;">
+                                        <field name="VAR">analisis</field>
+                                        <value name="VALUE">
+                                          <block type="lists_create_with" id="0B]Zx,X$gGgHWwP0`g}g">
+                                            <mutation items="0"></mutation>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="ecAWutmqBk}Qf7DGlT$M">
+                                            <field name="VAR">counter</field>
+                                            <value name="VALUE">
+                                              <block type="math_number" id="?.~Q~a}`o+$3/m;`!dot">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="`I;{9$R611qf*PNJ[-n2">
+                                                <field name="VAR">signal</field>
+                                                <value name="VALUE">
+                                                  <block type="math_number" id="ohQC%HomiSdbAgJ7Rpkp">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="-4" y="309">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="8?eYKAW%VczmRXQ-ou3r">
+        <value name="IF0">
+          <block type="variables_get" id="[1BU@=qIxPP2~CA(zlFd">
+            <field name="VAR">OP</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="purchase" id="W6q#Z-I3q3d[d3-`S[dS">
+            <field name="PURCHASE_LIST">DIGITEVEN</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="-5" y="420">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="trade_again" id="c)S|KjoQdXc8l#J@5z3P"></block>
+    </statement>
+  </block>
+</xml>
